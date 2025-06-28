@@ -1,0 +1,128 @@
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+body{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(circle at 8.13% 14.86%, #544b8d 0, #2c2c59 25%, #0b0a27 50%, #000000 75%, #000000 100%);
+}
+.circle-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circ1, .circ2, .circ3, .circ4, .circ5, .circ6, .circ7{
+  position: absolute;
+  width: 30px;
+  height: 130px;
+  border-radius: 100%;
+  border: 1.5px solid white;
+  
+}
+.circ1{
+  transform: scale(2);
+}
+.circ2{
+  transform: rotate(35deg) scale(2);
+}
+.circ3{
+  transform: rotate(-35deg) scale(2);
+}
+.circ4{
+  transform: rotate(60deg) scale(2);
+}
+.circ5{
+  transform: rotate(-60deg) scale(2);
+}
+.circ6{
+  transform: rotate(80deg) scale(2);
+}
+.circ7{
+  transform: rotate(-80deg) scale(2);
+}
+.inner-circle {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 5px 5px 20px 5px #55B6F1;
+}
+.circ1 > .inner{
+  animation: clock 2.6s infinite ease;
+}
+.circ2 > .inner{
+  animation: clock 2.5s infinite ease;
+}
+.circ3 > .inner{
+  animation: clock 2.4s infinite ease;
+}
+.circ4 > .inner{
+  animation: clock 2.3s infinite ease;
+}
+.circ5 > .inner{
+  animation: clock 2.2s infinite ease;
+}
+.circ6 > .inner{
+  animation: clock 2.1s infinite ease;
+}
+.circ7 > .inner{
+  animation: clock 2s infinite ease;
+}
+
+  
+@keyframes clock {
+0% {
+    transform: rotate(0deg);
+    height: 130px;
+  }
+  6% {
+    transform: rotate(23deg) translate(0, 0);
+    height: 90px;
+  }
+  12% {
+    transform: rotate(45deg);
+    height: 70px;
+  }
+  18% {
+    transform: rotate(68deg);
+    height: 60px;
+  }
+  26% {
+    transform: rotate(90deg) translate(0, 0) rotate(10deg);
+    height: 52px;
+  }
+  32% {
+    transform: rotate(113deg);
+    height: 60px;
+  }
+  38% {
+    transform: rotate(135deg);
+    height: 68px;
+  }
+  50% {
+    transform: rotate(180deg) translate(0, 0) rotate(-10deg);
+    height: 130px;
+  }
+  62% {
+    transform: rotate(225deg);
+    height: 70px;
+  }
+  74% {
+    transform: rotate(270deg) translate(0, 0) rotate(10deg);
+    height: 52px;
+  }
+  86% {
+    transform: rotate(315deg);
+    height: 70px;
+  }
+  100% {
+    transform: rotate(360deg) translate(0, 0) rotate(0deg);
+    height: 130px;
+  }  
+}
